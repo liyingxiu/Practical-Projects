@@ -75,14 +75,16 @@
         let player = new Howl({
             src:['http://downsc.chinaz.net/Files/DownLoad/sound1/201308/3394.mp3']
         })
+        let angle = 0;
         $(".fortunate-wheel").click(function () {
             player.play();
             $(".wheel-rotate").css("transform",'rotate(0deg)');
             let random_deg = _.random(48,122) * 22.5;
+            angle += random_deg;
             //22.5角度是使得指针每次都能停在中心位置
-            console.log(random_deg);
+            console.log(angle);
             $(".inner-inner").addClass('wheel-rotate');
-            $(".wheel-rotate").css("transform",'rotate('+random_deg+'deg)');
+            $(".wheel-rotate").css("transform",'rotate('+angle+'deg)');
         })
     </script>
 </body>
