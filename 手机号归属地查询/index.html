@@ -112,6 +112,7 @@
                         console.log("no");
                         $('.state').removeClass('wait');
                         $('.state').append("查找失败！");
+                        $('.result').empty();
                     }else{
                         console.log("yes");
                         $('.state').removeClass('wait');
@@ -127,9 +128,10 @@
             return `<div style="margin-top:10px">${carrier}</div>
                     <div class="logo">
                         <img src=${carriers[catName].logo} 
-                        style="width: 100%;height: auto;">
+                        style="width: 100%;height:auto;">
                     </div>`
         }
+
         //点击按钮触发
         $('.btn').click(function () {            
             let phoneNumber = $(" input[ type='text' ] ").val();
