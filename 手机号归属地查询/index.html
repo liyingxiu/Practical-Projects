@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手机号归属地查询</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        body {
+            height: 100vh;
+            background: #222A3B;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-mock {
+            width: 200px;
+            height: 350px;
+            padding: 80px 30px;
+            background-image: url("https://res.cform.cn/unzip/1582007540266_8497434676253208/source/frame.png");
+            background-size: 100% 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .result {
+            width: 90%;
+            height: 15%;
+            display: flex;
+            margin-top: -7px;
+            margin-left: -28px;
+        }
+
+        .title {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 20%;
+            margin-bottom: 5%;
+        }
+
+        input {
+            font-size: 18px;
+            height: 25px;
+        }
+
+        .btn {
+            margin-top: 15px;
+            width: 70px;
+            height: 30px;
+            font-size: 20px;
+        }
+
+        .state {
+            width: 100px;
+            height: 20px;
+            margin-top: 20px;
+            text-align: center;
+            /* background-color: beige; */
+        }
+        .wait{
+            background-image: url("https://res.cform.cn/unzip/1582007540266_8497434676253208/source/loading.gif");
+        }
+
+        .logo{
+            width: 100px;
+            margin-left: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="phone-mock">
+        <div class="result"></div>
+        <div class="title">手机号码归属地查询:</div>
+        <input type="text">
+        <button class="btn">查询</button>
+        <div class="state"></div>
+    </div>
+
+    <script>
+        let api = "https://tcc.taobao.com/cc/json/mobile_tel_segment.htm"
+        let loading = "https://res.cform.cn/unzip/1582007540266_8497434676253208/source/loading.gif"
+        let carriers = {
+            "中国电信": {
+                "zhName": "电信",
+                "logo": "https://res.cform.cn/unzip/1582007540266_8497434676253208/source/chinatelecom.png"
+            },
+            "中国移动": {
+                "zhName": "移动",
+                "logo": "https://res.cform.cn/unzip/1582007540266_8497434676253208/source/chinamobile.png"
+            },
+            "中国联通": {
+                "zhName": "联通",
+                "logo": "https://res.cform.cn/unzip/1582007540266_8497434676253208/source/chinaunicom.png"
+            },
+        }
+        
+
+        function find(num) {
+            $('.state').addClass('wait')
+            let theURL = api + '?tel=' + num;
+            $('.state').empty();
+            $.ajax({
+                url: theURL,
+                success:function(resp){
+                    if(typeof(resp.carrier)=="undefined"){
+                        console.log("no");
+                        $('.state').removeClass('wait');
+                        $('.state').append("查找失败！");
+                    }else{
+                        console.log("yes");
+                        $('.state').removeClass('wait');
+                        $('.state').append("查找成功！");
+                        $('.result').append(item(resp.carrier,resp.catName));
+                    }
+                },
+                dataType: "JSONP"
+            })
+        }
+
+        function item(carrier,catName){
+            return `<div style="margin-top:10px">${carrier}</div>
+                    <div class="logo">
+                        <img src=${carriers[catName].logo} 
+                        style="width: 100%;height: auto;">
+                    </div>`
+        }
+        //点击按钮触发
+        $('.btn').click(function () {            
+            let phoneNumber = $(" input[ type='text' ] ").val();
+            find(phoneNumber);
+        })
+        //按下回车触发
+        $('input').keydown(function(e){
+            if(e.key=="Enter"){
+                let phoneNumber = $(" input[ type='text' ] ").val();
+                find(phoneNumber);
+            }else{}
+        })
+
+    </script>
+</body>
+
+</html>
