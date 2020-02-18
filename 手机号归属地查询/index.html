@@ -112,11 +112,14 @@
                         console.log("no");
                         $('.state').removeClass('wait');
                         $('.state').append("查找失败！");
+                        //下一次按钮可以按
+                        $(".btn").prop('disabled', false);
                     }else{
                         console.log("yes");
                         $('.state').removeClass('wait');
                         $('.state').append("查找成功！");
                         $('.result').append(item(resp.carrier,resp.catName));
+                        $(".btn").prop('disabled', false);
                     }
                 },
                 dataType: "JSONP"
@@ -133,6 +136,7 @@
 
         //点击按钮触发
         $('.btn').click(function () {  
+            $(".btn").prop('disabled', true);
             $('.result').empty();          
             let phoneNumber = $(" input[ type='text' ] ").val();
             find(phoneNumber);
@@ -140,6 +144,7 @@
         //按下回车触发
         $('input').keydown(function(e){
             if(e.key=="Enter"){
+                $(".btn").prop('disabled', true);
                 $('.result').empty();
                 let phoneNumber = $(" input[ type='text' ] ").val();
                 find(phoneNumber);
