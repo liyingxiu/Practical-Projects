@@ -112,7 +112,6 @@
                         console.log("no");
                         $('.state').removeClass('wait');
                         $('.state').append("查找失败！");
-                        $('.result').empty();
                     }else{
                         console.log("yes");
                         $('.state').removeClass('wait');
@@ -133,13 +132,15 @@
         }
 
         //点击按钮触发
-        $('.btn').click(function () {            
+        $('.btn').click(function () {  
+            $('.result').empty();          
             let phoneNumber = $(" input[ type='text' ] ").val();
             find(phoneNumber);
         })
         //按下回车触发
         $('input').keydown(function(e){
             if(e.key=="Enter"){
+                $('.result').empty();
                 let phoneNumber = $(" input[ type='text' ] ").val();
                 find(phoneNumber);
             }else{}
