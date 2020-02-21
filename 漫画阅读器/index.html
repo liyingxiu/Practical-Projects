@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>漫画阅读器</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .centerframe {
+            width: 100vw;
+            height: 100vh;
+            background: rgb(2, 0, 36);
+            background: linear-gradient(225deg, rgba(2, 0, 36, 1) 38%, rgba(69, 9, 121, 1) 56%, rgba(0, 212, 255, 1) 80%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .disclaimer {
+            align-self: flex-start;
+            color: lightgray;
+            font-size: 10px;
+        }
+
+        /* 图片显示部分 */
+        .gallery {
+            width: 700px;
+            height: 70%;
+            border-radius: 5px;
+            overflow-x: hidden;
+            /* 视觉不可见 */
+            display: flex;
+        }
+
+        .main {
+            background-image: url(https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/1.png);
+            min-width: 400px;
+            height: 100%;
+            background-size: 100% 100%;
+            /* 背景图填充整个div */
+            transition: 0.5s;
+            background-repeat: no-repeat;
+        }
+
+        .blank {
+            background-color: rgba(0, 0, 0, 0);
+            min-width: 400px;
+            transition: 0.5s;
+        }
+
+        /* 进度条部分 */
+        .sidebar {
+            display: flex;
+            width: 420px;
+            height: 7%;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: darkgoldenrod;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        /* 翻页部分 */
+        .navbar {
+            width: 20%;
+            margin-bottom: -50px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .nav {
+            transform: scale(1.5);
+            transition: 0.5s;
+        }
+
+        .nav:hover {
+            transform: scale(3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="centerframe">
+        <!-- 图片的显示部分 -->
+        <div class="gallery">
+            <div class="blank" style="min-width: 150px;"></div>
+        </div>
+        <!-- 进度条 -->
+        <div class="sidebar"></div>
+        <!-- 左/右 -->
+        <div class="navbar">
+            <div class="prev nav">
+                <i data-feather="chevron-left"></i>
+            </div>
+            <div class="next nav">
+                <i data-feather="chevron-right"></i>
+            </div>
+        </div>
+        <div class="disclaimer">@本课程涉及资源来自互联网，仅供个人欣赏、学习之用，版权归发行公司所有。</div>
+    </div>
+
+    <script>
+        feather.replace();
+        var pages = [
+            { name: "page1", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/1.png')" },
+            { name: "page2", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/2.png')" },
+            { name: "page3", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/3.png')" },
+            { name: "page4", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/4.png')" },
+            { name: "page5", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/5.png')" },
+            { name: "page6", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/6.png')" },
+            { name: "page7", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/7.png')" },
+            { name: "page8", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/8.png')" },
+            { name: "page9", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/9.png')" },
+            { name: "page10", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/10.png')" },
+            { name: "page11", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/11.png')" },
+            { name: "page12", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/12.png')" },
+            { name: "page13", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/13.png')" },
+            { name: "page14", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/14.png')" },
+            { name: "page15", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/15.png')" },
+            { name: "page16", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/16.png')" },
+            { name: "page17", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/17.png')" },
+            { name: "page18", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/18.png')" },
+            { name: "page19", src: "url('https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/19.png')" },
+        ]
+
+        for (let o of pages) {
+            $('.gallery').append(`<div class="main ${o.name}" style="background-image:${o.src}"></div>
+                                  <div class='blank'></div>`);
+        }
+        for (let o of pages) {
+            $('.sidebar').append(`<div class='dot _${o.name}'><div>`)
+        }
+
+        $('._page1').css("background-color", "black");
+
+        //翻页功能
+        function doAction(action) {
+            return function () {
+                if (parseInt($('.page1').css('margin-left')) % 800 != 0) {
+                    event.preventDefault();
+                } else {
+                    //把margin-left的值换成function运行之后的结果
+                    //为了实现滑动，只改变第一张图的margin-left值即可
+                    //index是当前的索引，基本不用，v是当前的css的margin-left的值,注意v是一个字符串
+                    $('.page1').css('margin-left', function (index, v) {
+                        if (action == 'prev') {
+                            var offset = parseInt(v) + 800;
+                            var atTheEdge = parseInt(v) == 0;
+                            var item = 1;
+                        }
+
+                        if (action == 'next') {
+                            var offset = parseInt(v) - 800;
+                            var atTheEdge = Math.abs(parseInt(v)) / 800 == pages.length - 1;
+                            var item = -1;
+                        }
+
+                        if (atTheEdge) {
+                            //图片到了边界位置了
+                            return 0;
+                        }
+                        console.log(offset);
+                        let newNum = Math.abs(offset) / 800 + 1;
+                        let oldNum = newNum + item;
+                        // if(newNum==19){
+
+                        // }
+                        $(`._page${newNum}`).css("background-color", "black");
+                        $(`._page${oldNum}`).css("background-color", "darkgoldenrod");
+                        return offset;
+                    });
+                }
+            }
+        }
+
+        //向后翻页
+        let next = doAction('next');
+        $('.next').click(next)
+
+        //向前翻页
+        let prev = doAction('prev');
+        $('.prev').click(prev)
+
+
+    </script>
+</body>
+
+</html>
