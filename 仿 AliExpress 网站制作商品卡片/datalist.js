@@ -1,0 +1,98 @@
+var warehouse = [
+    {
+        name: "Microphone Kit",
+        price: 68.74,
+        discount: 0.2,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/1.jpg')",
+    },
+    {
+        name: "Key Holder",
+        price: 22.49,
+        discount: 0.22,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/2.jpg')",
+    },
+    {
+        name: "AirPods Case",
+        price: 5.17,
+        discount: 0.33,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/3.jpg')",
+    },
+    {
+        name: "Watch Band",
+        price: 7.30,
+        discount: 0.29,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/4.jpg')",
+    },
+    {
+        name: "Anti-lost Cord",
+        price: 1.26,
+        discount: 0.1,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/5.jpg')",
+    },
+    {
+        name: "Blazer Loose Pants",
+        price: 33.33,
+        discount: 0.43,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/6.jpg')",
+    },
+    {
+        name: "Floral Printed Long Skirt",
+        price: 43.26,
+        discount: 0.5,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/7.jpg')",
+    },
+    {
+        name: "Down Parka Coat",
+        price: 228.43,
+        discount: 0.69,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/8.jpg')",
+    },
+    {
+        name: "Cotton Linen Joggers ",
+        price: 14.80,
+        discount: 0.4,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/9.jpg')",
+    },
+    {
+        name: "Replacement Phone Battery",
+        price: 8.49,
+        discount: 0.3,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/10.jpg')",
+    },
+    {
+        name: "HDMI Cable",
+        price: 10.52,
+        discount: 0.33,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/11.jpg')",
+    },
+    {
+        name: "Cone Floor Foot Nail",
+        price: 11.01,
+        discount: 0.42,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/12.jpg')",
+    },
+    {
+        name: "18K Gold Pendant Necklace",
+        price: 19.98,
+        discount: 0.5,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/13.jpg')",
+    },
+    {
+        name: "Boho Beach Mat ",
+        price: 4.35,
+        discount: 0.22,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/14.jpg')",
+    },
+    {
+        name: "Rabbit Food Dispenser",
+        price: 2.99,
+        discount: 0.15,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/15.jpg')",
+    },
+    {
+        name: "Round Pet Bed",
+        price: 49.96,
+        discount: 0.3,
+        src: "url('https://res.cform.cn/unzip/1582279372638_6763694691228828/source/16.jpg')",
+    },
+]
