@@ -7,4 +7,4 @@
 
 [漫画阅读器](https://liyingxiu.github.io/Practical-Projects/漫画阅读器/index.html)  
 
-[网页小卡片](https://liyingxiu.github.io/Practical-Projects/仿 AliExpress 网站制作商品卡片/index.html)
+[网页小卡片](https://liyingxiu.github.io/Practical-Projects/仿AliExpress网站制作商品卡片/index.html)
