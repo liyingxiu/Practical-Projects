@@ -70,7 +70,7 @@
         .dot {
             width: 10px;
             height: 10px;
-            background-color: darkgoldenrod;
+            background-color: white;
             border-radius: 50%;
             transition: 0.2s;
         }
@@ -78,7 +78,7 @@
         /* 翻页部分 */
         .navbar {
             width: 20%;
-            margin-bottom: -50px;
+            margin-bottom: -20px;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -147,7 +147,8 @@
             $('.sidebar').append(`<div class='dot _${o.name}'><div>`)
         }
 
-        $('._page1').css("background-color", "black");
+        $('._page1').css("background-color", "rgba(199, 47, 105, 0.5)");
+        let newNum = 1;
 
         //翻页功能
         function doAction(action) {
@@ -173,16 +174,19 @@
 
                         if (atTheEdge) {
                             //图片到了边界位置了
+                            console.log(newNum,item);
+                            if(newNum==pages.length && item == -1){
+                                console.log('hi');
+                                $(`._page${pages.length}`).css("background-color", "white");
+                                $('._page1').css("background-color", "rgba(199, 47, 105, 0.5)");
+                            }
                             return 0;
                         }
-                        console.log(offset);
-                        let newNum = Math.abs(offset) / 800 + 1;
-                        let oldNum = newNum + item;
-                        // if(newNum==19){
-
-                        // }
-                        $(`._page${newNum}`).css("background-color", "black");
-                        $(`._page${oldNum}`).css("background-color", "darkgoldenrod");
+                        newNum = Math.abs(offset) / 800 + 1;
+                        console.log(newNum);
+                        var oldNum = newNum + item;
+                        $(`._page${newNum}`).css("background-color", "rgba(199, 47, 105, 0.5)");
+                        $(`._page${oldNum}`).css("background-color", "white");
                         return offset;
                     });
                 }
@@ -202,3 +206,10 @@
 </body>
 
 </html>
+
+<!-- console.log(newNum,item);
+                        if(newNum==pages.length && action=='next'){
+                            console.log('hi');
+                            $(`._page19`).css("background-color", "darkgoldenrod");
+                            $('._page1').css("background-color", "black");
+                        } -->
