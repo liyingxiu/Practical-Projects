@@ -42,7 +42,7 @@
             display: flex;
         }
 
-        .main {
+        img {
             background-image: url(https://res.cform.cn/unzip/1582190953171_47492497684911905/comic/1.png);
             min-width: 400px;
             height: 100%;
@@ -141,7 +141,7 @@
         ]
 
         for (let o of pages) {
-            $('.gallery').append(`<div class="main ${o.name}" style="background-image:${o.src}"></div>
+            $('.gallery').append(`<img class="${o.name}" src=${o.src.slice(5,-2)}>
                                   <div class='blank'></div>`);
         }
         for (let o of pages) {
