@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS</title>
+    <link rel="stylesheet" href="https://res.cform.cn/unzip/1582524806017_1270986901181046/tailwind.min.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .pink {
+            background: rgb(253, 225, 232);
+            background: linear-gradient(90deg, rgba(253, 225, 232, 0.9) 41%, rgba(244, 213, 220, 0.9) 88%);
+        }
+
+        .frame {
+            width: 260px;
+            height: 550px;
+            background: rgb(136, 124, 229);
+            background: linear-gradient(180deg, rgba(136, 124, 229, 0.9) 19%, rgba(163, 109, 153, 0.9) 52%, rgba(247, 60, 84, 0.9) 87%);
+        }
+
+        .text-1xs {
+            font-size: 0.5rem;
+        }
+
+        .rounded-1xl {
+            border-radius: 1.25rem;
+        }
+    </style>
+</head>
+
+<body class="pink" style="margin: 0;padding: 0;">
+    <div class="center-frame flex justify-center items-center h-screen">
+        <div class="frame rounded-1xl shadow-2xl">
+            <div class="head flex justify-between ml-4 mr-5 mt-2">
+                <div class="head__time" id="myDate"></div>
+                <div class="head__wifi flex flex-row mr-2 justify-around h-4 w-4">
+                    <img src="https://res.cform.cn/unzip/1582524819346_9124741506002318/source/icon-top-1.png"
+                        alt="signal">
+                    <img src="https://res.cform.cn/unzip/1582524819346_9124741506002318/source/icon-top-2.png"
+                        alt="wifi">
+                    <img src="https://res.cform.cn/unzip/1582524819346_9124741506002318/source/icon-top-3.png"
+                        alt="battery">
+                </div>
+
+            </div>
+            <div class="arrow w-2 h-2 ml-5 mt-4">
+                <i data-feather="chevrons-left"></i>
+            </div>
+            <div class="image-username flex justify-start mt-8 ml-5">
+                <div class="image w-10 h-10 mr-3 flex justify-center" style="border-radius: 50%;overflow: hidden;" ><img src="https://res.cform.cn/unzip/1582524819346_9124741506002318/source/avater.jpeg" alt="user-logo"></div>
+                <div class="username flex flex-col">
+                    <div class="font-bold text-gray-100">Benjamin Wells</div>
+                    <div class="text-gray-100 text-1xs">Tukang Foto Dadakan</div>
+                    <div></div>
+                </div>
+            
+            
+            </div>
+            <div class="painting mr-4 ml-4 rounded-1xl mt-5 shadow-xl" style="overflow:hidden">
+                <img src="https://res.cform.cn/unzip/1582524819346_9124741506002318/source/art.png" alt="painting">
+            </div>
+            <div class="title font-bold text-gray-100 text-2xl mt-2 ml-5">Abstract Painting</div>
+            <div class="description text-1xs ml-5 text-gray-100 mt-2">
+                <div>Ukuran karya seni fotografi</div>
+                <div>12 4/5 * 9 4/5 in</div>
+                <div>32.5 * 25 m</div>
+            </div>
+            <div class="imgs flex justify-between mr-8 ml-8 mt-4">
+
+                <div class="flex flex-col justify-around items-center">
+                    <div class="rounded-full bg-white w-10 h-10 shadow-xl mb-3">
+                        <img src="https://res.cform.cn/unzip/1582524819346_9124741506002318/source/icon-bottom-1.png" alt="like">
+                    </div>
+                    <div class="text-1xs text-gray-100">Suka</div>
+                </div>
+
+                <div class="flex flex-col justify-around items-center">
+                    <div class="rounded-full bg-white w-10 h-10 shadow-xl mb-3">
+                        <img src="https://res.cform.cn/unzip/1582524819346_9124741506002318/source/icon-bottom-2.png" alt="like">
+                    </div>
+                    <div class="text-1xs text-gray-100">Unduh</div>
+                </div>
+
+                <div class="flex flex-col justify-around items-center">
+                    <div class="rounded-full bg-white w-10 h-10 shadow-xl mb-3">
+                        <img src="https://res.cform.cn/unzip/1582524819346_9124741506002318/source/icon-bottom-3.png" alt="like">
+                    </div>
+                    <div class="text-1xs text-gray-100">Profile</div>
+                </div>
+
+            </div>
+        </div>
+        
+        <script>
+            feather.replace();
+            var myVar = setInterval(function () { myclock() }, 1000);
+            function myclock() {
+                var myDate = new Date();
+                var hour = myDate.getHours();
+                var minute = myDate.getMinutes();
+                var seconds = myDate.getSeconds();
+                myTime = hour + ":" + minute + ":" + seconds;
+                document.getElementById("myDate").innerHTML = myTime;
+            } 
+        </script>
+</body>
+
+</html>
