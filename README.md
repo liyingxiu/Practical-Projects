@@ -9,4 +9,4 @@
 
 [网页小卡片](https://liyingxiu.github.io/Practical-Projects/商品卡片/index.html)  
 
-[Tailwind CSS布局](https://liyingxiu.github.io/Practical-Projects/Tailwind写页面样式/index.html)  
+[Tailwind CSS布局](https://liyingxiu.github.io/Practical-Projects/Tailwind/index.html)  
