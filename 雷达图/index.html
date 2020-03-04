@@ -68,18 +68,19 @@
 
         var ctx = document.getElementById('radar').getContext("2d");
 
+        Chart.defaults.global.defaultFontColor = 'black';
         var chart = new Chart(ctx, {
             type: 'radar',
             data: {
                 labels: ['忍', '体', '幻', '贤', '力', '速', '精', '印'],
                 datasets: [{
                     label: ninjaData[0].name,
-                    data: ninjaData[0].attributes
+                    data: ninjaData[0].attributes,
+                    backgroundColor: 'rgba(128,45,90,0.3)',
                 }]
             },
-
         });
-
+        
         function doAction(action) {
             return function () {
                 if (action == 'next') {
@@ -101,16 +102,17 @@
                 chart.data.datasets.pop();
                 chart.data.datasets.push({
                     label: ninjaData[flag].name,
-                    data: ninjaData[flag].attributes
+                    data: ninjaData[flag].attributes,
+                    backgroundColor: 'rgba(128,45,90,0.3)',
                 })
                 chart.update();
             }
         }
 
-            var next = doAction('next');
-            var pre = doAction('pre');
-            $('.next').click(next);
-            $('.pre').click(pre);
+        var next = doAction('next');
+        var pre = doAction('pre');
+        $('.next').click(next);
+        $('.pre').click(pre);
 
     </script>
 </body>
