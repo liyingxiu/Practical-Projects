@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rader Chart</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <script src="./datalist.js"></script>
+    <style>
+        .frame {
+            height: 100vh;
+        }
+
+        .btn {
+            transform: scale(3);
+        }
+
+        .pic {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 30px;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .title {
+            color: rgb(158, 158, 158);
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="frame flex flex-row justify-evenly items-center flex-row bg-gray-400 m-5">
+        <div class="pre btn"><i data-feather="arrow-left"></i></div>
+        <div class="chart">
+            <div class="title"><b>火影忍者能力值</b></div>
+            <div class="pic"></div>
+            <!-- 雷达图 -->
+            <div class="radar bg-gray-700">
+                <canvas width="600" height="400" id="radar"></canvas>
+            </div>
+        </div>
+        <div class="next btn"><i data-feather="arrow-right"></i></div>
+    </div>
+
+    <script>
+        feather.replace();
+
+        let imgsrc = ninjaData[0].src.slice(5, -2);
+        $('.pic').append(`<img src="${imgsrc}">`);
+        let flag = 0;
+
+        var ctx = document.getElementById('radar').getContext("2d");
+
+        var chart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['忍', '体', '幻', '贤', '力', '速', '精', '印'],
+                datasets: [{
+                    label: ninjaData[0].name,
+                    data: ninjaData[0].attributes
+                }]
+            },
+
+        });
+
+        $('.next').click(function (event) {
+            if (flag == ninjaData.length - 1){
+                flag=-1;
+            }
+            flag = flag + 1;
+            console.log(flag);
+            imgsrc = ninjaData[flag].src.slice(5, -2);
+            $('.pic').empty();
+            $('.pic').append(`<img src="${imgsrc}">`);
+            chart.data.datasets.pop();
+            chart.data.datasets.push({
+                label: ninjaData[flag].name,
+                data: ninjaData[flag].attributes
+            })
+            chart.update();
+            
+        })
+
+        $('.pre').click(function (event) {
+            if (flag == 0){
+                flag=ninjaData.length - 2 ;
+            }
+            flag = flag + 1;
+            console.log(flag);
+            imgsrc = ninjaData[flag].src.slice(5, -2);
+            $('.pic').empty();
+            $('.pic').append(`<img src="${imgsrc}">`);
+            chart.data.datasets.pop();
+            chart.data.datasets.push({
+                label: ninjaData[flag].name,
+                data: ninjaData[flag].attributes
+            })
+            chart.update();
+            
+        })
+
+    </script>
+</body>
+
+</html>

@@ -10,3 +10,5 @@
 [网页小卡片](https://liyingxiu.github.io/Practical-Projects/商品卡片/index.html)  
 
 [Tailwind CSS布局](https://liyingxiu.github.io/Practical-Projects/Tailwind/index.html)  
+
+[chartjs实现雷达图](https://liyingxiu.github.io/Practical-Projects/雷达图/index.html)  
