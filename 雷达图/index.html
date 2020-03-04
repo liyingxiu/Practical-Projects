@@ -80,41 +80,37 @@
 
         });
 
-        $('.next').click(function (event) {
-            if (flag == ninjaData.length - 1){
-                flag=-1;
+        function doAction(action) {
+            return function () {
+                if (action == 'next') {
+                    if (flag == ninjaData.length - 1) {
+                        flag = -1;
+                    }
+                    flag = flag + 1;
+                }
+                if (action == 'pre') {
+                    if (flag == 0) {
+                        flag = ninjaData.length - 2;
+                    }
+                    flag = flag - 1;
+                }
+                console.log(flag);
+                imgsrc = ninjaData[flag].src.slice(5, -2);
+                $('.pic').empty();
+                $('.pic').append(`<img src="${imgsrc}">`);
+                chart.data.datasets.pop();
+                chart.data.datasets.push({
+                    label: ninjaData[flag].name,
+                    data: ninjaData[flag].attributes
+                })
+                chart.update();
             }
-            flag = flag + 1;
-            console.log(flag);
-            imgsrc = ninjaData[flag].src.slice(5, -2);
-            $('.pic').empty();
-            $('.pic').append(`<img src="${imgsrc}">`);
-            chart.data.datasets.pop();
-            chart.data.datasets.push({
-                label: ninjaData[flag].name,
-                data: ninjaData[flag].attributes
-            })
-            chart.update();
-            
-        })
+        }
 
-        $('.pre').click(function (event) {
-            if (flag == 0){
-                flag=ninjaData.length - 2 ;
-            }
-            flag = flag - 1;
-            console.log(flag);
-            imgsrc = ninjaData[flag].src.slice(5, -2);
-            $('.pic').empty();
-            $('.pic').append(`<img src="${imgsrc}">`);
-            chart.data.datasets.pop();
-            chart.data.datasets.push({
-                label: ninjaData[flag].name,
-                data: ninjaData[flag].attributes
-            })
-            chart.update();
-            
-        })
+            var next = doAction('next');
+            var pre = doAction('pre');
+            $('.next').click(next);
+            $('.pre').click(pre);
 
     </script>
 </body>
