@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Muggle</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <style>
+        body {
+            height: 100vh;
+            background-color: #29384C;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .frame {
+            /* width: 225px;
+            height: 288px; */
+            width: 231px;
+            height: 299px;
+            padding: 51px;
+            background-image: url("//res.cform.cn/unzip/1581565864304_9053483119569032/frame.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+
+        .fragment {
+            display: flex;
+        }
+
+        .piece {
+            width: 75px;
+            height: 72px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid #29384C;
+        }
+
+        .result {
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="frame"></div>
+        <div class="result"></div>
+        <div class="fragment"></div>
+    </div>
+
+    <script>
+        let $piece = $(".piece");
+        let $fragment = $(".fragment");
+        let $frame = $(".frame");
+        let $result = $('.result');
+        let pieceValue = [];
+        for (let i = 1; i < 13; i++) {
+            $fragment.append(`<img src = "./source/${i}.png" class = "piece out" id = "${i}">`);
+            // $(".frame").children('#'+i).click(function () {
+            //     $().appendTo($fragment);
+            // })
+        }
+        
+        $(".piece").click(function () {
+            // console.log(pieceValue);
+            if($(this).hasClass("out")){
+                $(this).appendTo($frame);
+                $(this).removeClass("out");
+                $(this).addClass("in");
+                let key = $(this).attr('id');
+                pieceValue.push(key);
+            }else{
+                $(this).appendTo($fragment);
+                $(this).removeClass("in");
+                $(this).addClass("out");
+                pieceValue.pop();
+            }
+            if (pieceValue.length === 12) {
+                $result.empty();
+                $result.show();
+                if (pieceValue.toString() === "1,2,3,4,5,6,7,8,9,10,11,12") {
+                    $result.append(`<div class = "result">Congratulations</div>`);
+                    console.log("yes");
+                } else {
+                    $result.append(`<div class = "result">Try Again!</div>`);
+                    console.log("wrong");
+                }
+            }else{
+                $result.hide();
+                $result.empty();
+            }
+        })
+    </script>
+</body>
+
+</html>

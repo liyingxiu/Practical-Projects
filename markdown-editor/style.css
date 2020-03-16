@@ -1,0 +1,30 @@
+.full{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.left{
+    width: 50%;
+    background-color: rgb(240, 248, 255);
+    color: rgb(33, 42, 51);
+    padding: 40px;
+}
+
+.right{
+    width: 50%;
+    background-color: rgb(33, 42, 51);
+    color: aliceblue;
+    padding: 0 40px 40px 40px;
+}
+
+.counter{
+    height: 40px;
+    line-height: 40px;
+    color: aliceblue;
+    text-align: right;
+}
+
+.right-content{
+    color: aliceblue;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>markdown-editor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.8.0/marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="margin: 0;">
+    <div class="full">
+        <!-- contenteditable="true" 可以直接输入文字，而不是在textarea中输入文字 -->
+        <div class="left" contenteditable="true" ></div>
+        <div class="right">
+            <div class="counter"></div>
+            <div class="right-content"></div>
+        </div>
+    </div>
+
+    <script>
+        marked.setOptions({breaks:true})
+        $(".left").sortable();
+        $(".left").on('mousemove keyup', function(){
+            let words = document.querySelector(".left").innerText;
+            $(".right-content").html(marked(words));
+        })
+        
+        $(".left").keyup(function(){
+            let counterText = $(".right-content").text();
+            console.log(typeof counterText);
+            let counter;
+            if(counterText){
+                counter = counterText.match(/\S/g).length;
+                console.log(counter);
+            }
+            else{
+                counter = 0;
+                console.log("0");
+            }
+            $(".counter").text(`您已经输入${counter}字符，加油！`);
+        })
+
+    </script>
+</body>
+</html>
