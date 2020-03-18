@@ -1,0 +1,95 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 15%;
+    background-color: #F7F7F7;
+    padding: 1.5vw;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 12.5vw;
+    height: 10vw;
+    background-image: url("//res.cform.cn/unzip/1581643927625_7823370050281042/github_octocat.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.content {
+    width: 85%;
+    padding: 2vw 4vw;
+    background-color: white;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    width: 40vw;
+    height: 6vw;
+    margin: 1vw 0 3vw 0;
+    flex-shrink: 0;
+    font-size: 5vw;
+}
+
+.articles{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+}
+
+.card{
+    border: 1px solid rgb(201, 194, 194);
+    width: 312px;
+    height: 220px;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 4px 4px #F7F7F7;
+}
+
+/* .colorful{
+    background-image: linear-gradient(#e66465, #9198e5);
+    width: 10px;
+    height: 220px;
+    border-radius: 100px;
+} */
+
+
+.name{
+    margin: 8px;
+    color: rgb(18,104,210);
+    font-size: 20px;
+}
+
+.name:hover{
+    margin: 8px;
+    color: rgb(18,104,210);
+    font-size: 20px;
+    border-bottom: rgb(18,104,210);
+}
+
+.description{
+    margin: 10px;
+    text-align: justify;
+    margin-top: 8px;
+}
+
+.bottom{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 20px;
+    margin-left: 30px;
+}
+
+.language{
+    margin-right: 100px;
+}

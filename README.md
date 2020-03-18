@@ -15,4 +15,6 @@
 
 [puzzle_game](https://liyingxiu.github.io/Practical-Projects/puzzle-games/拼图游戏/index.html)  
 
-[markdown_editor](https://liyingxiu.github.io/Practical-Projects/markdown-editor/index.html)
+[markdown_editor](https://liyingxiu.github.io/Practical-Projects/markdown-editor/index.html)  
+
+[GitHub-Trending_jQuery](https://liyingxiu.github.io/Practical-Projects/GitHub-Trending_jQuery/index.html)

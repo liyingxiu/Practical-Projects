@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Muggle</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body style="margin: 0;">
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo"></div>
+        </div>
+        <div class="content">
+            <div class="title">Github Trending</div>
+            <div class="articles">
+                <!-- 填充获取的数据 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function item(data) {
+            return `<div class = "card">
+                            <a style="text-decoration:none;" href = "${data.url}">
+                            <div class = "name">${data.author}/<b>${data.name}</b></div>
+                            </a>
+                            <div class = "description">${data.description}</div>
+                            <div class = "bottom">
+                            <div class = "language">●${data.language}</div>
+                            <div class = "stars">★${data.stars}</div>
+                            </div>
+                    </div>`;
+        }
+        $.ajax({
+            url: 'https://github-trending-api.now.sh/repositories?language=javascript&since=weekly',
+            success: function (resp) {
+                console.log(resp);
+                for (let e of resp) {
+                    $('.articles').append(item(e));
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
