@@ -18,3 +18,5 @@
 [markdown_editor](https://liyingxiu.github.io/Practical-Projects/markdown-editor/index.html)  
 
 [GitHub-Trending_jQuery](https://liyingxiu.github.io/Practical-Projects/GitHub-Trending_jQuery/index.html)
+
+[Axios展示](https://liyingxiu.github.io/Practical-Projects/Axios-display/index.html)
